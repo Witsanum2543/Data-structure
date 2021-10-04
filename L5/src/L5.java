@@ -20,9 +20,9 @@ class AList <T>{
         items = (T[]) new Object[11];
         size = 0;
     }
-    private void grow(int n) {
+    private void grow() {
         // grow the array to capacity n
-        T[] newItems = (T[]) new Object[n];
+        T[] newItems = (T[]) new Object[items.length*2];
         System.arraycopy(items, 0, newItems, 0, size);
         items = newItems;
     }

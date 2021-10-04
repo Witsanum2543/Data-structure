@@ -24,6 +24,7 @@ public class  LinkedListDeque<T>  {
         this.first = null;
         this.last = null;
     }
+    // deepcopy
     public LinkedListDeque(LinkedListDeque<T> other) {
         Node<T> other_cur = other.first;
         for (int i=0; i<other.size; i++){
@@ -81,7 +82,7 @@ public class  LinkedListDeque<T>  {
         Node<T> cur = this.first;
         String ans = "";
         for (int i=0; i<size-1; i++){
-            ans += "" + cur.head + ", ";
+            ans += "" + cur.head + " ";
             cur = cur.rest;
         }
         ans += "" + cur.head;
