@@ -1,4 +1,4 @@
-public class mydeque<T>  {
+public class  LinkedListDeque<T>  {
     // linked-list node implement
     private class Node<T> {
         T head;
@@ -20,9 +20,16 @@ public class mydeque<T>  {
     // ---------------------------------------------
 
     // declare mydeque with empty parameter = null (not create a node)
-    public mydeque(){
+    public LinkedListDeque(){
         this.first = null;
         this.last = null;
+    }
+    public LinkedListDeque(LinkedListDeque<T> other) {
+        Node<T> other_cur = other.first;
+        for (int i=0; i<other.size; i++){
+            this.addLast(other_cur.head);
+            other_cur = other_cur.rest;
+        }
     }
 
     // Adds an item of type T to the front of the deque.
@@ -131,22 +138,17 @@ public class mydeque<T>  {
     }
 
     public static void main(String[] args) {
-        mydeque<Integer> list = new mydeque<>();
+        LinkedListDeque<Integer> list = new LinkedListDeque<>();
 
         list.addFirst(5);
-        list.addLast(123);
+        list.addFirst(123);
         list.addFirst(587);
-        list.addLast(587);
-        list.removeLast();
-        list.removeFirst();
-        list.removeLast();
-        list.removeLast();
-        list.addFirst(3213);
+        list.addFirst(587);
+        System.out.println(list.toString());
 
-        mydeque<String> str = new mydeque<>();
-        str.addFirst("HEllo");
-        str.addLast("RQWE");
-        System.out.println(str.toString());
-        str.removeLast();
+        LinkedListDeque<Integer> copy = new LinkedListDeque<>(list);
+        System.out.println(copy.toString());
+        copy.addFirst(500);
+        System.out.println(copy.toString());
     }
 }
