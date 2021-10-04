@@ -47,9 +47,11 @@ class SLList {
         }
         cur.rest = new IntNode(x, null);
     }
+
     public int getFirst() {
         return sen.rest.head;
     }
+
     public int getLast() {
         IntNode cur = sen;
         while (cur.rest != null) {
@@ -57,9 +59,11 @@ class SLList {
         }
         return cur.head;
     }
+
     public int size() {
         return size;
     }
+
     public String toString() {
         IntNode cur = sen;
         String ans = "";
@@ -69,12 +73,14 @@ class SLList {
         }
         return ans;
     }
+
     public void removeFirst() {
         if (size >= 1) {
             size--;
             sen.rest = sen.rest.rest;
         }
     }
+
     public void insert(int newValue, int k) {
         size++;
         IntNode cur = sen;
