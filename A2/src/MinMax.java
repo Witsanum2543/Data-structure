@@ -19,6 +19,4 @@ public class MinMax {
         }
         return (myMax + myMin)/2.0;
     }
-
-
 }

@@ -1,7 +1,8 @@
 public class L3 {
     public static void main(String[] args) {
         // [7, 11, 9]
-        IntNode list = null;
+        IntNode list = new IntNode(5,null);
+
         list = new IntNode(9, list);
         list = new IntNode(11, list);
         list = new IntNode(7, list);

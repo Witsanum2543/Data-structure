@@ -1,10 +1,12 @@
 public class L4 {
     public static void main(String[] args) {
         SLList L = new SLList();
-        L.addFirst(12);
-        L.addFirst(23);
-        L.addFirst(43);
-        L.insert(50,3);
+        L.addFirst(5);
+        L.addFirst(10);
+        L.addLast(10);
+        L.addLast(20);
+        L.addLast(30);
+//        L.insert(50,3);
         System.out.println(L.toString());
     }
 }
@@ -40,6 +42,15 @@ class SLList {
     }
 
     public void addLast(int x) {
+        // for loop way
+//        size++;
+//        IntNode cur = sen;
+//        for(cur = sen; cur.rest != null; cur = cur.rest){
+//
+//        }
+//        cur.rest = new IntNode(x, null);
+
+        // while loop way
         size++;
         IntNode cur = sen;
         while (cur.rest != null) {
