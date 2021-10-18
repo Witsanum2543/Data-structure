@@ -78,17 +78,6 @@ public class L7 {
     }
 
 
-    /*
-    Higher-order function (HoF) (In python)
-    - a function that treats another function as its input data
-
-    def twice(f, x)
-        return f(f(x))
-
-    def triple(y) : return 3*y
-
-    print(twice(triple, 2))
-     */
     // before java 8 this is how people do use interface to declare function type
     static int twice(IntUnaryFunction f, int x){
         return f.apply(f.apply(x));
@@ -119,14 +108,15 @@ public class L7 {
                 new Cat("cat2", 1, 9),
                 new Cat("cat3", 8, 19)
         };
-        // idea 1
+
         // standard syntax methods
-//        int maxLocation =
-//                maxIndex2(cats, L7::isLargerWeight)
+//        int maxLocation = maxIndex2(cats, L7::isLargerWeight);
 
         // java 8 trick : annoymous function
         int maxLocation =
-                maxIndex2(cats, (Cat x, Cat y) -> x.getWeight() > y.getWeight());
+                maxIndex2(cats,
+                        // we just declare function here without given it a name
+                        (Cat x, Cat y) -> x.getWeight() > y.getWeight());
 
         // idea 2
         int answer3 = maxIndex3(cats);

@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Class Room - a room in an adventure game.
  *
@@ -14,11 +16,9 @@
  */
 public class Room 
 {
+    HashMap<String, Room> exit;
     public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private boolean isMagicRoom = false;
 
     /**
      * Create a room described "description". Initially, it has
@@ -28,7 +28,14 @@ public class Room
      */
     public Room(String description) 
     {
+        exit = new HashMap<>();
         this.description = description;
+    }
+    public Room(String description, boolean isMagicRoom)
+    {
+        exit = new HashMap<>();
+        this.description = description;
+        this.isMagicRoom = isMagicRoom;
     }
 
     /**
@@ -39,20 +46,45 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExits(Room north, Room east, Room south, Room west, Room up, Room down)
     {
         if(north != null) {
-            northExit = north;
+            exit.put("northExit", north);
         }
         if(east != null) {
-            eastExit = east;
+            exit.put("eastExit", east);
         }
         if(south != null) {
-            southExit = south;
+            exit.put("southExit", south);
         }
         if(west != null) {
-            westExit = west;
+            exit.put("westExit", west);
         }
+        if(up != null) {
+            exit.put("upExit", up);
+        }
+        if(down != null) {
+            exit.put("downExit", down);
+        }
+    }
+
+    public Room getNorthExit(){
+        return exit.get("northExit");
+    }
+    public Room getEastExit(){
+        return exit.get("eastExit");
+    }
+    public Room getSouthExit(){
+        return exit.get("southExit");
+    }
+    public Room getWestExit(){
+        return exit.get("westExit");
+    }
+    public Room getUpExit(){
+        return exit.get("upExit");
+    }
+    public Room getDownExit(){
+        return exit.get("downExit");
     }
 
     /**
@@ -61,6 +93,10 @@ public class Room
     public String getDescription()
     {
         return description;
+    }
+
+    public boolean isMagicRoom(){
+        return this.isMagicRoom;
     }
 
 }

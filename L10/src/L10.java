@@ -3,22 +3,16 @@ import java.util.*;
 class ArraySet<T> implements Iterable<T>{
 
     private List<T> items;
-
     public ArraySet() { items = new ArrayList<>(); }
 
     public void add(T value) {
-        if (!contains(value)) {
-            items.add(value);
-        }
+        if (!contains(value)) {items.add(value);}
     }
-
-    public boolean contains(T value) {
-       return items.contains(value);
-    }
-
+    public boolean contains(T value) {return items.contains(value);}
     public int size() { return items.size(); }
 
-        // inner class
+// --------------------------------------------------------------------------------//
+
     private class ArraySetIterator implements Iterator<T> {
 
         private int pos;
@@ -43,26 +37,26 @@ class ArraySet<T> implements Iterable<T>{
 
 public class L10 {
     public static void main(String[] args) {
-        // use java.set
-//        Set<Integer> hs = new HashSet<>();
-//        hs.add(5);
-//        hs.add(11);
-//        for (Integer e : hs){
-//            System.out.println(e);
-//        }
 
-        // use our own implement set
-        // manual mode
-        ArraySet<Integer> as = new ArraySet<>();
-        as.add(5);
-        as.add(11);
-//        Iterator<Integer> it = as.iterator();
-//        while (it.hasNext()){
-//            Integer e = it.next();
+        // use java.set
+//        Set<Integer> hashset = new HashSet<>();
+//        hashset.add(5);
+//        hashset.add(11);
+//        for (Integer e : hashset){ System.out.println(e);}
+
+
+        // use our own implement Set class
+        ArraySet<Integer> arrayset = new ArraySet<>();
+        arrayset.add(5);
+        arrayset.add(11);
+        // Manual way of iterationc
+        Iterator<Integer> iterator = arrayset.iterator();  // give reference to the start of a list but not a first element
+        while (iterator.hasNext()){
+            int i = iterator.next(); // we use .next() before printout first element because .iterator() it not really point at first element of list.
+            System.out.println(i);
+        }
+//        for(Integer e: arrayset){
 //            System.out.println(e);
 //        }
-        for(Integer e: as){
-            System.out.println(e);
-        }
     }
 }
